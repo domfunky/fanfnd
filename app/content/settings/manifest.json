@@ -1,8 +1,8 @@
 {
   "name": "fanfnd",
   "shortName": "fanfnd",
-  "description": "Crowdfunded Events",
-  "themeColor": "#0b3765",
-  "backgroundColor": "#ffffff",
+  "description": "Fan funded experiences made easy",
+  "themeColor": "#ffffff",
+  "backgroundColor": "#1a1a1a",
   "lang": "en"
 }

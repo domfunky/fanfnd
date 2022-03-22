@@ -14,7 +14,7 @@ export default class Footer extends Vue {}
 </script>
 
 <style lang="scss">
-.footer {
-  background-color: $bluise;
-}
+// .footer {
+//   background-color: $bluise;
+// }
 </style>

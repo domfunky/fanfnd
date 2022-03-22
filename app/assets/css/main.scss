@@ -3,6 +3,18 @@
 body {
   @apply antialiased;
   @apply subpixel-antialiased;
+  @apply text-gray-100 leading-normal;
+  background: #1a1a1a;
+}
+
+.header__logo {
+  img {
+    max-width: 100px;
+  }
+}
+
+nav {
+  display: none !important;
 }
 
 .main {

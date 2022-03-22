@@ -20,3 +20,6 @@ yarn-error.log
 # Jest Coverage
 coverage
 .DS_Store
+
+# Local Netlify folder
+.netlify
