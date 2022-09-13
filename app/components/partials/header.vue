@@ -14,6 +14,12 @@
           </nuxt-link>
         </li>
 
+        <li>
+          <nuxt-link to="/events" class="block font-medium px-4 py-1 md:p-2 lg:px-4">
+            Events
+          </nuxt-link>
+        </li>
+
         <li
           v-for="(page, index) in pages"
           :key="index"

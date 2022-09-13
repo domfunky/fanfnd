@@ -7,6 +7,7 @@ export interface State {
   perPage: number;
   pages: Page[];
   posts: Post[];
+  events: Event[];
   route?: Route;
 }
 
@@ -15,6 +16,7 @@ export const appState = {
   perPage: 4,
   pages: [],
   posts: [],
+  events: [],
 };
 
 export const mutations: MutationTree<State> = {
@@ -24,11 +26,15 @@ export const mutations: MutationTree<State> = {
   SET_POSTS: (state, payload: Record<string, unknown>): void => {
     Vue.set(state, 'posts', payload);
   },
+  SET_EVENTS: (state, payload: Record<string, unknown>): void => {
+    Vue.set(state, 'events', payload);
+  },
 };
 
 interface Actions<S, R> extends ActionTree<S, R> {
   GET_PAGES_LIST(context: ActionContext<S, R>): Promise<void | Error>;
   GET_POSTS_LIST(context: ActionContext<S, R>): Promise<void | Error>;
+  GET_EVENTS_LIST(context: ActionContext<S, R>): Promise<void | Error>;
   nuxtServerInit(context: ActionContext<S, R>): void;
 }
 
@@ -38,6 +44,12 @@ export const actions: Actions<State, State> = {
     const context = await require.context('@/content/blog/', false, /\.json$/);
     const posts = await getContent({ context, prefix: 'blog' });
     commit('SET_POSTS', posts);
+  },
+  async GET_EVENTS_LIST({ commit }): Promise<void | Error> {
+    // Use webpack to search the events directory matching .json files
+    const context = await require.context('@/content/events/', false, /\.json$/);
+    const events = await getContent({ context, prefix: 'events' });
+    commit('SET_EVENTS', events);
   },
 
   async GET_PAGES_LIST({ commit }): Promise<void | Error> {
@@ -51,7 +63,11 @@ export const actions: Actions<State, State> = {
   },
 
   async nuxtServerInit({ dispatch }): Promise<void> {
-    await Promise.all([dispatch('GET_PAGES_LIST'), dispatch('GET_POSTS_LIST')]);
+    await Promise.all([
+      dispatch('GET_PAGES_LIST'),
+      dispatch('GET_POSTS_LIST'),
+      dispatch('GET_EVENTS_LIST'),
+    ]);
   },
 };
 

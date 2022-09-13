@@ -1,8 +1,8 @@
 {
   "name": "nuxt-netlifycms",
   "version": "0.0.1",
-  "description": "Yo",
-  "author": "Gomah",
+  "description": "fanfnd",
+  "author": "pragmatweb",
   "private": true,
   "scripts": {
     "dev": "nuxt-ts -o",
